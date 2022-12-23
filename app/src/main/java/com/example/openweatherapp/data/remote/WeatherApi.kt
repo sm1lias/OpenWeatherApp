@@ -1,6 +1,7 @@
-package com.example.openweatherapp.api
+package com.example.openweatherapp.data.remote
 
-import com.example.openweatherapp.data.Weather
+import com.example.openweatherapp.data.remote.dto.WeatherDto
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -12,5 +13,5 @@ interface WeatherApi {
         @Query("longitude") lon: String,
         @Query("hourly") hourly: String = "temperature_2m",
 
-    ): Weather
+    ): Response<WeatherDto>
 }

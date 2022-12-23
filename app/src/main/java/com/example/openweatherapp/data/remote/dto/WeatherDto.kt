@@ -1,9 +1,10 @@
-package com.example.openweatherapp.data
+package com.example.openweatherapp.data.remote.dto
 
 
+import com.example.openweatherapp.domain.model.Weather
 import com.google.gson.annotations.SerializedName
 
-data class Weather(
+data class WeatherDto(
     @SerializedName("elevation")
     val elevation: Double,
     @SerializedName("generationtime_ms")
@@ -23,3 +24,12 @@ data class Weather(
     @SerializedName("utc_offset_seconds")
     val utcOffsetSeconds: Int
 )
+
+fun WeatherDto.toWeather(): Weather{
+    return Weather(
+        latitude = this.latitude,
+        longitude = this.longitude,
+        weatherPerHourly = this.hourly,
+        symbol = this.hourlyUnits.temperature2m
+    )
+}
