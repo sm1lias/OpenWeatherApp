@@ -1,18 +1,21 @@
 package com.example.openweatherapp.data.remote.dto
 
 
+import com.example.openweatherapp.common.Utils
 import com.example.openweatherapp.domain.model.Weather
 import com.google.gson.annotations.SerializedName
 
 data class WeatherDto(
+    @SerializedName("daily")
+    val daily: Daily,
+    @SerializedName("daily_units")
+    val dailyUnits: DailyUnits,
+    @SerializedName("hourly")
+    val hourly: Hourly,
     @SerializedName("elevation")
     val elevation: Double,
     @SerializedName("generationtime_ms")
     val generationTimeMs: Double,
-    @SerializedName("hourly")
-    val hourly: Hourly,
-    @SerializedName("hourly_units")
-    val hourlyUnits: HourlyUnits,
     @SerializedName("latitude")
     val latitude: Double,
     @SerializedName("longitude")
@@ -26,10 +29,12 @@ data class WeatherDto(
 )
 
 fun WeatherDto.toWeather(): Weather{
+    val hourlyMap = this.hourly.toWeatherHourlyMap()
     return Weather(
         latitude = this.latitude,
         longitude = this.longitude,
-        weatherPerHourly = this.hourly,
-        symbol = this.hourlyUnits.temperature2m
+        weatherPerDay = this.daily.toWeatherPerDay(),
+        temperatureHourly =  hourlyMap,
+        temperature = hourlyMap[Utils.getCurrentTimeInISO8601()]?.toInt()?: 0
     )
 }

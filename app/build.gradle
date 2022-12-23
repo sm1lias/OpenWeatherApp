@@ -53,6 +53,9 @@ dependencies {
     //logger
     implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
 
+    //rx binding
+    implementation 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
+
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'

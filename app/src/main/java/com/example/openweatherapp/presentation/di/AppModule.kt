@@ -1,6 +1,6 @@
 package com.example.openweatherapp.presentation.di
 
-import com.example.openweatherapp.HTTPLogger
+import com.example.openweatherapp.logs.HTTPLogger
 import com.example.openweatherapp.data.remote.WeatherApi
 import com.example.openweatherapp.data.repository.WeatherRepositoryImpl
 import com.example.openweatherapp.domain.repository.WeatherRepository

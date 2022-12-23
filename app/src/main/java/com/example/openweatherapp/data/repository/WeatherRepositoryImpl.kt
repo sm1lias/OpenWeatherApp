@@ -15,7 +15,7 @@ class WeatherRepositoryImpl @Inject constructor(private val weatherApi: WeatherA
 
     override suspend fun getWeather(lat: String, lon:String): Resource<Weather> {
         return try {
-            weatherToResource(weatherApi.getWeather(lon, lat))
+            weatherToResource(weatherApi.getWeather(lat, lon))
         } catch (e: IOException) {
             Resource.Error("No internet connection")
         } catch (e: HttpException){

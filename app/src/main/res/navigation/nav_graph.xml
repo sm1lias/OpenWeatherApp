@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.openweatherapp.presentation.FirstFragment"
+        android:name="com.example.openweatherapp.presentation.DailyWeatherFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_daily_weather">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"

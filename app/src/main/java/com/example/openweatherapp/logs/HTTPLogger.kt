@@ -1,4 +1,4 @@
-package com.example.openweatherapp
+package com.example.openweatherapp.logs
 
 import okhttp3.logging.HttpLoggingInterceptor
 import timber.log.Timber

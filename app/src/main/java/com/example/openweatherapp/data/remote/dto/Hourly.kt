@@ -1,6 +1,7 @@
 package com.example.openweatherapp.data.remote.dto
 
 
+import com.example.openweatherapp.common.Utils
 import com.google.gson.annotations.SerializedName
 
 data class Hourly(
@@ -9,3 +10,5 @@ data class Hourly(
     @SerializedName("time")
     val time: List<String>
 )
+
+fun Hourly.toWeatherHourlyMap() = Utils.doubleListsToMapIfSameSize(this.time, this.temperature2m)
