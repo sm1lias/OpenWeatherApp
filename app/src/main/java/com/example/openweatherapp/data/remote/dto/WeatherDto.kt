@@ -28,13 +28,15 @@ data class WeatherDto(
     val utcOffsetSeconds: Int
 )
 
-fun WeatherDto.toWeather(): Weather{
+fun WeatherDto.toWeather(): Weather {
     val hourlyMap = this.hourly.toWeatherHourlyMap()
     return Weather(
         latitude = this.latitude,
         longitude = this.longitude,
         weatherPerDay = this.daily.toWeatherPerDay(),
-        temperatureHourly =  hourlyMap,
-        temperature = hourlyMap[Utils.getCurrentTimeInISO8601()]?.toInt()?: 0
+        temperatureHourly = hourlyMap,
+        temperature = hourlyMap
+            .firstOrNull { hourly -> hourly.first == Utils.getCurrentTimeInISO8601() }     //[Utils.getCurrentTimeInISO8601()]?.toInt()?: 0
+            ?.second?.toInt() ?: 0
     )
 }

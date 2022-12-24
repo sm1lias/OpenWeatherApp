@@ -12,7 +12,7 @@ interface WeatherApi {
         @Query("latitude") lat: String,
         @Query("longitude") lon: String,
         @Query("daily", encoded = true) daily: String = "weathercode,temperature_2m_max,temperature_2m_min",
-        @Query("hourly", encoded = true) hourly: String = "temperature_2m",
+        @Query("hourly", encoded = true) hourly: String = "temperature_2m,weathercode",
         @Query("timezone") timezone: String = "Africa/Cairo"
 
     ): Response<WeatherDto>

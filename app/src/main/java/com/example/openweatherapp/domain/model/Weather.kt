@@ -5,6 +5,6 @@ data class Weather(
     val longitude: Double,
     val weatherPerDay: WeatherPerDay,
     val symbol: String = "°C",
-    val temperatureHourly: Map<String, Double>,
+    val temperatureHourly: List<Triple<String, Double, WeatherType>>,
     val temperature: Int
 )

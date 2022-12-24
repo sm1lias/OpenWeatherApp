@@ -1,8 +1,8 @@
 package com.example.openweatherapp.data.remote.dto
 
 
-import com.example.openweatherapp.common.Constants
 import com.example.openweatherapp.domain.model.WeatherPerDay
+import com.example.openweatherapp.domain.model.WeatherType
 import com.google.gson.annotations.SerializedName
 
 data class Daily(
@@ -21,6 +21,6 @@ fun Daily.toWeatherPerDay(): WeatherPerDay {
         maxTemperature = this.temperature2mMax.map { it.toInt() },
         minTemperature = this.temperature2mMin.map { it.toInt() },
         time = this.time,
-        status = this.weatherCode.map { Constants.weatherCodes.getOrDefault(it, "") }
+        status = this.weatherCode.map { WeatherType.fromCode(it) }
     )
 }
