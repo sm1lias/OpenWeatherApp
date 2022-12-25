@@ -50,7 +50,7 @@ class DailyWeatherFragment : Fragment() {
         viewModel.data.observe(viewLifecycleOwner) { data ->
             when (data) {
                 is Resource.Loading -> {
-                    binding.progressBar.visibility = View.VISIBLE
+//                    binding.progressBar.visibility = View.VISIBLE
                 }
                 is Resource.Success -> {
                     data.data?.let { weather ->
@@ -62,15 +62,16 @@ class DailyWeatherFragment : Fragment() {
                             imgStatus.setImageResource(weather.weatherPerDay.status[0].iconRes)
                             txtTemp.text = "${weather.temperature} ${weather.symbol}"
                             txtDesc.text = weather.weatherPerDay.status[0].weatherDesc
-//                        txtStatus.text = data.data?.weatherPerDay?.status?.get(0) ?: ""
-//                        txtCurrentTemp.text = "${data.data?.temperature.toString()} ${data.data?.symbol}"
-                            progressBar.visibility = View.INVISIBLE
+                            txtMinTemp.text = "${weather.weatherPerDay.minTemperature[0]} ${weather.symbol}"
+                            txtMaxTemp.text = "${weather.weatherPerDay.maxTemperature[0]} ${weather.symbol}"
+                            cardView.visibility = View.VISIBLE
+//                            progressBar.visibility = View.INVISIBLE
                     }
                     }
                 }
                 is Resource.Error -> {
                     Toast.makeText(requireContext(), data.message, Toast.LENGTH_LONG).show()
-                    binding.progressBar.visibility = View.INVISIBLE
+//                    binding.progressBar.visibility = View.INVISIBLE
                 }
             }
         }
